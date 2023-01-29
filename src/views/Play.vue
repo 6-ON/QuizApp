@@ -1,3 +1,16 @@
+<script>
+import Login from "@/views/Login.vue";
+export default {
+  name :'Play',
+  components: {Login},
+  methods : {
+    handleLogin(payload){
+      console.log('payload')
+      console.log(payload)
+    }
+  }
+}
+</script>
 <template>
-    <h1>Play</h1>
+    <Login @login-submitted="handleLogin"></Login>
 </template>

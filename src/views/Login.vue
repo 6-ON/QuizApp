@@ -3,13 +3,21 @@ export default {
   name: 'Login',
   data() {
     return {
-      logo:'Quiz',
-      inputs: ['email', 'password']
+      email: '',
+      password: ''
     }
   },
-  computed :{
-    alogo(){
-      return this.logo + ' ' + 'App'
+  computed: {
+
+  },
+
+  methods: {
+    handleSubmit() {
+      const loginPayload = {
+        email: this.email,
+        password: this.password
+      }
+      this.$emit('login-submitted',loginPayload)
     }
   }
 }
@@ -19,10 +27,12 @@ export default {
   <div class="main-wrapper">
     <div class="backdrop-blur rounded-xl p-6">
       <div>
-        {{ alogo }}
+        <img src="" alt="later...">
       </div>
-      <form action="" class="flex flex-col gap-2">
-        <input v-for="input in inputs" :type="input" name="" id="">
+      <form action="" class="flex flex-col gap-2" @submit.prevent="handleSubmit">
+        <input type="email" name="email" v-model="email">
+        <input type="password" name="password" v-model="password">
+        <button class="bg-amber-500 text-white py-2 rounded-3xl" type="submit">Login</button>
       </form>
     </div>
   </div>
